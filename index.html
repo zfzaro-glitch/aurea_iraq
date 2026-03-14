@@ -208,15 +208,14 @@
         .fa-tiktok { color: #000000; }
         .fa-envelope { color: #EA4335; }
 
-        /* ستایلی فوتەرە نوێیەکە بە فۆنتی جیاواز */
         .footer { 
             margin-top: 40px; 
-            font-size: 18px; /* قەبارەکەم کەمێک گەورە کرد بۆ ئەوەی جوانتر بێت */
+            font-size: 18px;
             color: var(--text-muted); 
             letter-spacing: 0.5px; 
             font-weight: 700; 
-         
-            font-family:Arial, Helvetica, sans-serif /* ئەمە فۆنتە نوێیەکەیە */
+           
+            font-family: 'Amiri', serif; 
         }
 
     </style>
@@ -363,15 +362,28 @@
             document.getElementById('langMenu').classList.remove('active');
         }
 
+        // باشترکردنی دوگمەی شەیرکردن
         function shareProfile() {
+            const currentUrl = window.location.href;
+            
             if (navigator.share) {
                 navigator.share({
                     title: 'AUREA Creative Agency',
                     text: 'اكتشف خدماتنا الإبداعية | Discover our creative services:',
-                    url: window.location.href
-                }).catch(console.error);
+                    url: currentUrl
+                }).catch((error) => console.log('Error sharing:', error));
             } else {
-                alert("Copy the website link: " + window.location.href);
+                // ئەگەر پەنجەرەی شەیر نەبوو، لینکەکە کۆپی دەکات
+                navigator.clipboard.writeText(currentUrl).then(() => {
+                    const currentLang = document.documentElement.lang;
+                    if(currentLang === 'en') {
+                        alert("Link copied to clipboard!");
+                    } else {
+                        alert("تم نسخ الرابط بنجاح!");
+                    }
+                }).catch(err => {
+                    console.error('Failed to copy: ', err);
+                });
             }
         }
     </script>
