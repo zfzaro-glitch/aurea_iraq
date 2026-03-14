@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title id="page-title">AUREA | Creative Agency</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* شێوازی مینیمالیست (سپی، سادە، ئاسان) */
+        :root {
+            --bg-color: #f9f9f9;
+            --card-bg: #ffffff;
+            --text-main: #111111;
+            --text-muted: #666666;
+            --border-color: #eaeaea;
+            --accent-main: #000000;
+            --btn-hover: #f1f1f1;
+        }
+
+        * {
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px 15px;
+            position: relative;
+        }
+
+        .card {
+            width: 100%;
+            max-width: 450px;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 24px;
+            padding: 40px 25px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+            position: relative;
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .top-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .icon-btn {
+            font-size: 20px;
+            color: var(--text-main);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+        }
+
+        .icon-btn:hover {
+            background: var(--btn-hover);
+        }
+
+        .lang-menu {
+            position: absolute;
+            top: 50px;
+            right: 0;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 8px;
+            display: none;
+            flex-direction: column;
+            gap: 4px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            z-index: 50;
+            min-width: 100px;
+        }
+
+        .lang-menu.active { display: flex; }
+
+        .lang-btn {
+            background: none;
+            border: none;
+            color: var(--text-main);
+            padding: 8px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: 0.2s;
+            text-align: center;
+            font-family: inherit;
+        }
+        .lang-btn:hover { background: var(--btn-hover); }
+
+        .logo-img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 1px solid var(--border-color);
+            padding: 4px;
+            object-fit: cover;
+            margin-bottom: 20px;
+        }
+
+        h1 { font-size: 24px; margin: 0 0 10px; color: var(--text-main); font-weight: 800; letter-spacing: 1px; }
+        
+        .about-text { 
+            font-size: 14px; 
+            line-height: 1.7; 
+            color: var(--text-muted); 
+            margin-bottom: 30px; 
+            padding: 0 10px;
+        }
+
+        .services-section {
+            text-align: start;
+            margin-bottom: 30px;
+        }
+
+        .section-title {
+            font-size: 18px;
+            color: var(--text-main);
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .service-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .service-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .service-icon {
+            font-size: 20px;
+            color: var(--text-main);
+            margin-top: 3px;
+            width: 25px;
+            text-align: center;
+        }
+
+        .service-content h3 {
+            margin: 0 0 5px;
+            font-size: 15px;
+            font-weight: 700;
+        }
+
+        .service-content p {
+            margin: 0;
+            font-size: 13px;
+            line-height: 1.6;
+            color: var(--text-muted);
+        }
+
+        .btn-list { display: flex; flex-direction: column; gap: 12px; }
+        .social-btn { 
+            display: flex; align-items: center; padding: 16px 20px; border-radius: 12px; 
+            text-decoration: none; font-weight: 600; font-size: 15px;
+            background-color: var(--card-bg); color: var(--text-main);
+            border: 1px solid var(--border-color);
+            transition: all 0.2s; 
+        }
+        .social-btn:hover { background-color: var(--btn-hover); }
+        .social-btn:active { transform: scale(0.98); }
+
+        .social-btn i { font-size: 20px; width: 30px; text-align: center; }
+        .social-btn span { flex-grow: 1; text-align: center; margin-right: -30px; }
+        html[dir="ltr"] .social-btn span { margin-right: 0; margin-left: -30px; }
+
+        /* ڕەنگی ئایکۆنەکان */
+        .fa-whatsapp { color: #25D366; }
+        .fa-phone-alt { color: #007AFF; } /* ڕەنگی شین بۆ پەیوەندی مۆبایل */
+        .fa-instagram { color: #E1306C; }
+        .fa-tiktok { color: #000000; }
+        .fa-envelope { color: #EA4335; }
+
+        .footer { margin-top: 35px; font-size: 11px; color: #aaaaaa; letter-spacing: 1px; font-weight: 500; text-transform: uppercase; }
+
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        
+        <div class="top-controls">
+            <div class="icon-btn" onclick="shareProfile()">
+                <i class="fas fa-arrow-up-right-from-square"></i>
+            </div>
+            
+            <div style="position: relative;">
+                <div class="icon-btn" onclick="toggleLangMenu()">
+                    <i class="fas fa-globe"></i>
+                </div>
+                <div class="lang-menu" id="langMenu">
+                    <button class="lang-btn" onclick="setLanguage('ar')">العربية</button>
+                    <button class="lang-btn" onclick="setLanguage('en')">English</button>
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <img src="logo.jpg" alt="AUREA Logo" class="logo-img">
+            <h1>AUREA</h1>
+            <p class="about-text translatable" 
+               data-ar="في AUREA لا نقدّم خدمات إعلانية فحسب، بل نبني تجارب بصرية متكاملة تُحوّل العلامات التجارية إلى حضورٍ مؤثر يُرى ويُتذكر." 
+               data-en="At AUREA, we don't just provide advertising services; we build integrated visual experiences that transform brands into an impactful presence that is seen and remembered.">
+               في AUREA لا نقدّم خدمات إعلانية فحسب، بل نبني تجارب بصرية متكاملة تُحوّل العلامات التجارية إلى حضورٍ مؤثر يُرى ويُتذكر.
+            </p>
+        </div>
+
+        <div class="services-section">
+            <h2 class="section-title translatable" 
+                data-ar="نقدّم مجموعة متكاملة من الحلول الإبداعية:" 
+                data-en="We offer a comprehensive suite of creative solutions:">
+                نقدّم مجموعة متكاملة من الحلول الإبداعية:
+            </h2>
+
+            <div class="service-item">
+                <div class="service-icon"><i class="fas fa-pen-nib"></i></div>
+                <div class="service-content">
+                    <h3 class="translatable" data-ar="الهوية البصرية" data-en="Visual Identity">الهوية البصرية</h3>
+                    <p class="translatable" 
+                       data-ar="نصمم هويات بصرية متكاملة تعكس شخصية العلامة التجارية وتمنحها حضوراً واضحاً ومميزاً في السوق، بدءاً من الشعار وصولاً إلى جميع العناصر البصرية." 
+                       data-en="We design comprehensive visual identities that reflect the brand's personality, giving it a distinct market presence, from the logo to all visual elements.">
+                       نصمم هويات بصرية متكاملة تعكس شخصية العلامة التجارية وتمنحها حضوراً واضحاً ومميزاً في السوق، بدءاً من الشعار وصولاً إلى جميع العناصر البصرية.
+                    </p>
+                </div>
+            </div>
+
+            <div class="service-item">
+                <div class="service-icon"><i class="fas fa-video"></i></div>
+                <div class="service-content">
+                    <h3 class="translatable" data-ar="الإنتاج الإعلاني" data-en="Advertising Production">الإنتاج الإعلاني</h3>
+                    <p class="translatable" 
+                       data-ar="نحوّل الأفكار إلى أعمال إعلانية مؤثرة من خلال إنتاج محتوى بصري احترافي يجمع بين الإبداع والدقة، لنصنع إعلانات تجذب الانتباه." 
+                       data-en="We turn ideas into impactful advertising by producing professional visual content that combines creativity and precision to capture attention.">
+                       نحوّل الأفكار إلى أعمال إعلانية مؤثرة من خلال إنتاج محتوى بصري احترافي يجمع بين الإبداع والدقة، لنصنع إعلانات تجذب الانتباه.
+                    </p>
+                </div>
+            </div>
+
+            <div class="service-item">
+                <div class="service-icon"><i class="fas fa-camera-retro"></i></div>
+                <div class="service-content">
+                    <h3 class="translatable" data-ar="التصوير الاحترافي" data-en="Professional Photography">التصوير الاحترافي</h3>
+                    <p class="translatable" 
+                       data-ar="نقدّم خدمات تصوير احترافية للمنتجات والعلامات التجارية، بأسلوب بصري يعكس الجودة ويبرز التفاصيل التي تصنع الفرق." 
+                       data-en="We provide professional photography services for products and brands, with a visual style that reflects quality and highlights details.">
+                       نقدّم خدمات تصوير احترافية للمنتجات والعلامات التجارية، بأسلوب بصري يعكس الجودة ويبرز التفاصيل التي تصنع الفرق.
+                    </p>
+                </div>
+            </div>
+
+            <div class="service-item">
+                <div class="service-icon"><i class="fas fa-print"></i></div>
+                <div class="service-content">
+                    <h3 class="translatable" data-ar="الطباعة والتنفيذ" data-en="Printing & Execution">الطباعة والتنفيذ</h3>
+                    <p class="translatable" 
+                       data-ar="نوفر حلول طباعة وتنفيذ عالية الجودة تعكس قيمة العلامة التجارية، مع عناية دقيقة بكل تفصيلة لضمان ظهور العمل بأفضل صورة." 
+                       data-en="We provide high-quality printing and execution solutions that reflect the brand's value, with careful attention to every detail.">
+                       نوفر حلول طباعة وتنفيذ عالية الجودة تعكس قيمة العلامة التجارية، مع عناية دقيقة بكل تفصيلة لضمان ظهور العمل بأفضل صورة.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="btn-list">
+            <a href="https://wa.me/9647736551362" class="social-btn" target="_blank">
+                <i class="fab fa-whatsapp"></i>
+                <span class="translatable" data-ar="واتساب" data-en="WhatsApp">واتساب</span>
+            </a>
+            
+            <a href="tel:+9647736551362" class="social-btn">
+                <i class="fas fa-phone-alt"></i>
+                <span class="translatable" data-ar="اتصال مباشر" data-en="Call Us">اتصال مباشر</span>
+            </a>
+
+            <a href="https://www.instagram.com/aurea_iraq" class="social-btn" target="_blank">
+                <i class="fab fa-instagram"></i>
+                <span class="translatable" data-ar="إنستغرام" data-en="Instagram">إنستغرام</span>
+            </a>
+            <a href="https://www.tiktok.com/@aurea_iraq" class="social-btn" target="_blank">
+                <i class="fab fa-tiktok"></i>
+                <span class="translatable" data-ar="تيك توك" data-en="TikTok">تيك توك</span>
+            </a>
+            <a href="mailto:aurea.iraq@gmail.com" class="social-btn" target="_blank">
+                <i class="fas fa-envelope"></i>
+                <span class="translatable" data-ar="البريد الإلكتروني" data-en="Email Us">البريد الإلكتروني</span>
+            </a>
+        </div>
+
+        <div class="footer">
+            POWERED BY SUNFLOWER WEB
+        </div>
+    </div>
+
+    <script>
+        function toggleLangMenu() {
+            const menu = document.getElementById('langMenu');
+            menu.classList.toggle('active');
+        }
+
+        document.addEventListener('click', function(event) {
+            const isClickInside = event.target.closest('.fa-globe') || event.target.closest('.lang-menu');
+            if (!isClickInside) { document.getElementById('langMenu').classList.remove('active'); }
+        });
+
+        function setLanguage(lang) {
+            document.documentElement.dir = (lang === 'en') ? 'ltr' : 'rtl';
+            document.documentElement.lang = lang;
+            
+            const elements = document.querySelectorAll('.translatable');
+            elements.forEach(el => {
+                if(el.getAttribute(`data-${lang}`)) {
+                    el.innerText = el.getAttribute(`data-${lang}`);
+                }
+            });
+            
+            document.getElementById('langMenu').classList.remove('active');
+        }
+
+        function shareProfile() {
+            if (navigator.share) {
+                navigator.share({
+                    title: 'AUREA Creative Agency',
+                    text: 'اكتشف خدماتنا الإبداعية | Discover our creative services:',
+                    url: window.location.href
+                }).catch(console.error);
+            } else {
+                alert("Copy the website link: " + window.location.href);
+            }
+        }
+    </script>
+
+</body>
+</html>
