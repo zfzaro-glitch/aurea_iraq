@@ -5,8 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title id="page-title">AUREA | Creative Agency</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
     <style>
-        /* شێوازی مینیمالیست (سپی، سادە، ئاسان) */
         :root {
             --bg-color: #f9f9f9;
             --card-bg: #ffffff;
@@ -25,7 +29,7 @@
         html { scroll-behavior: smooth; }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Cairo', sans-serif;
             background-color: var(--bg-color);
             color: var(--text-main);
             display: flex;
@@ -126,11 +130,12 @@
         h1 { font-size: 24px; margin: 0 0 10px; color: var(--text-main); font-weight: 800; letter-spacing: 1px; }
         
         .about-text { 
-            font-size: 14px; 
+            font-size: 15px; 
             line-height: 1.7; 
             color: var(--text-muted); 
             margin-bottom: 30px; 
             padding: 0 10px;
+            font-weight: 600;
         }
 
         .services-section {
@@ -142,7 +147,7 @@
             font-size: 18px;
             color: var(--text-main);
             margin-bottom: 20px;
-            font-weight: 700;
+            font-weight: 800;
         }
 
         .service-item {
@@ -170,21 +175,22 @@
 
         .service-content h3 {
             margin: 0 0 5px;
-            font-size: 15px;
-            font-weight: 700;
+            font-size: 16px;
+            font-weight: 800;
         }
 
         .service-content p {
             margin: 0;
-            font-size: 13px;
+            font-size: 14px;
             line-height: 1.6;
             color: var(--text-muted);
+            font-weight: 600;
         }
 
         .btn-list { display: flex; flex-direction: column; gap: 12px; }
         .social-btn { 
             display: flex; align-items: center; padding: 16px 20px; border-radius: 12px; 
-            text-decoration: none; font-weight: 600; font-size: 15px;
+            text-decoration: none; font-weight: 700; font-size: 16px;
             background-color: var(--card-bg); color: var(--text-main);
             border: 1px solid var(--border-color);
             transition: all 0.2s; 
@@ -196,14 +202,22 @@
         .social-btn span { flex-grow: 1; text-align: center; margin-right: -30px; }
         html[dir="ltr"] .social-btn span { margin-right: 0; margin-left: -30px; }
 
-        /* ڕەنگی ئایکۆنەکان */
         .fa-whatsapp { color: #25D366; }
-        .fa-phone-alt { color: #007AFF; } /* ڕەنگی شین بۆ پەیوەندی مۆبایل */
+        .fa-phone-alt { color: #007AFF; }
         .fa-instagram { color: #E1306C; }
         .fa-tiktok { color: #000000; }
         .fa-envelope { color: #EA4335; }
 
-        .footer { margin-top: 35px; font-size: 11px; color: #aaaaaa; letter-spacing: 1px; font-weight: 500; text-transform: uppercase; }
+        /* ستایلی فوتەرە نوێیەکە بە فۆنتی جیاواز */
+        .footer { 
+            margin-top: 40px; 
+            font-size: 18px; /* قەبارەکەم کەمێک گەورە کرد بۆ ئەوەی جوانتر بێت */
+            color: var(--text-muted); 
+            letter-spacing: 0.5px; 
+            font-weight: 700; 
+         
+            font-family:Arial, Helvetica, sans-serif /* ئەمە فۆنتە نوێیەکەیە */
+        }
 
     </style>
 </head>
@@ -318,9 +332,10 @@
             </a>
         </div>
 
-        <div class="footer">
-            POWERED BY SUNFLOWER WEB
+        <div class="footer translatable" data-ar="من بغداد ... إلى العالم" data-en="From Baghdad ... to the World">
+            من بغداد ... إلى العالم
         </div>
+
     </div>
 
     <script>
